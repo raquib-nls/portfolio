@@ -1,0 +1,1413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --text-secondary: #666;
+    --border: #e0e0e0;
+    --accent: #3b82f6;
+    --logo: #46e5cb;
+    --card-bg: #ffffff;
+    --hover-bg: #f5f5f5;
+
+    /* Section colors - warm tones */
+    --about-bg: #fff5f0;
+    --skills-bg: #f0f9ff;
+    --experience-bg: #fef6f0;
+    --projects-bg: #f0fff4;
+    --education-bg: #fef0ff;
+    --cert-bg: #fffbf0;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    animation: fadeIn 0.6s ease-in;
+}
+
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Progress Bar */
+#progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    width: 0%;
+    border-radius: 12px;
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--logo);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    background: linear-gradient(90deg, var(--accent), var(--logo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: filter 0.3s ease;
+}
+
+.nav-logo:hover {
+    filter: brightness(1.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    padding-top: 120px;
+
+
+
+
+}
+
+/* Header */
+header {
+    max-width: 1000px;
+    margin-bottom: 80px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.header-description {
+    max-width: 900px;
+    margin: 0 auto 32px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid;
+}
+
+.btn-primary {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+}
+
+.btn-primary:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text);
+    transform: translateY(-2px);
+}
+
+.material-icons {
+    font-size: 18px;
+}
+
+/* Section */
+section {
+    margin-bottom: 64px;
+    padding: 48px 32px;
+    border-radius: 12px;
+    position: relative;
+}
+
+#about {
+    background: var(--about-bg);
+}
+
+#skills {
+    background: var(--skills-bg);
+}
+
+#experience {
+    background: var(--experience-bg);
+}
+
+#projects {
+    background: var(--projects-bg);
+}
+
+#education {
+    background: var(--education-bg);
+}
+
+#certifications {
+    background: var(--cert-bg);
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 12px;
+
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+
+
+
+
+/* About */
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px;
+}
+
+
+
+
+
+/* Skills - Terminal Style */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.skill-category {
+    /* background: #1a1a1a; */
+    /* background: #131313d1; */
+    background: #1a1a1a;
+
+
+    border: 2px solid #333;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+    border-color: var(--accent);
+}
+
+.skill-terminal-header {
+    background: #2a2a2a;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f56;
+}
+
+.dot-yellow {
+    background: #ffbd2e;
+}
+
+.dot-green {
+    background: #27c93f;
+}
+
+.skill-terminal-title {
+    color: #888;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.skill-terminal-body {
+    padding: 16px;
+    
+}
+
+.skill-category h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #3b82f6;
+    font-family: 'Fira Code', monospace;
+}
+
+.skill-category h3::before {
+    content: '> ';
+    color: #27c93f;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category li {
+    font-size: 13px;
+    color: #e5e5e5;
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+    font-family: 'Fira Code', monospace;
+}
+
+.skill-category li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #888;
+}
+
+
+
+/* Experience */
+.experience-item {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.experience-date {
+    position: absolute;
+    right: 15px;
+    font-size: 13px;
+    white-space: nowrap;
+
+}
+
+.experience-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.experience-header {
+    margin-bottom: 16px;
+
+}
+
+.experience-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.experience-company {
+    font-size: 15px;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.experience-date {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.experience-projects {
+    margin-top: 20px;
+}
+
+.project-subsection {
+    margin-bottom: 20px;
+}
+
+.project-subsection h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.experience-projects ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.experience-projects li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.experience-projects li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 28px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.2);
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 12px;
+}
+
+.project-title {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.project-type {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.project-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.tech-badge {
+    background: #f0f0f0;
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+}
+
+.project-metrics {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.metric-box {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.metric-value {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.project-description {
+    margin-top: 12px;
+}
+
+.project-description ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-description li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.project-description li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+}
+
+.project-link:hover {
+    border-color: var(--text);
+    background: var(--text);
+    color: #fff;
+}
+
+.project-link .material-icons {
+    transition: transform 0.3s ease;
+    font-size: 18px;
+}
+
+.project-link:hover .material-icons {
+    transform: translateX(4px);
+}
+
+.certifcate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+.certifcate-link:hover {
+    border-color: var(--text);
+    background: var(--text);
+    color: #fff;
+}
+
+.certifcate-link .material-icons {
+    transition: transform 0.3s ease;
+    font-size: 18px;
+}
+
+.certifcate-link:hover .material-icons {
+    transform: translateX(4px);
+}
+
+
+
+
+/* Education */
+.education-item {
+    margin-bottom: 32px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.education-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.1);
+}
+
+.education-degree {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.education-school {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.education-date {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.education-details {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.edu-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.edu-present {
+    background: rgba(59, 130, 246, 0.1);
+    color: #245fde;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.edu-completed {
+    background: rgba(38, 218, 104, 0.12);
+    color: #20ce60;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+
+
+
+
+/* Certifications */
+.cert-item {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.cert-item:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.cert-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cert-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.cert-details {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+
+
+
+
+
+
+/* card layout of certification card */
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(59, 130, 246, 0.15);
+}
+
+.cert-org {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.cert-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+
+
+/* certification section  */
+
+#certifications {
+    background: var(--cert-bg);
+}
+
+
+.section-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    max-width: 650px;
+}
+
+
+.cert-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 36px;
+}
+
+
+
+.cert-box {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.cert-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent);
+}
+
+/* certificate image (document feel) */
+.cert-box img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+
+.cert-box img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+
+.cert-box h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+
+.cert-org {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+
+.cert-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 10px;
+}
+
+
+.cert-verify {
+    font-size: 13px;
+    color: #444;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+}
+
+
+.cert-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+
+    animation: fadeIn 0.25s ease;
+}
+
+.cert-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+    animation: zoomIn 0.25s ease;
+}
+
+
+.cert-close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-size: 36px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+
+
+
+/* animation */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* mobile refinenment  */
+
+@media (max-width: 768px) {
+    .cert-showcase {
+        gap: 28px;
+    }
+
+    .cert-box {
+        padding: 18px;
+    }
+}
+
+
+
+.profile-pic-wrapper {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+
+   
+    display: block;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 60% 40%;  
+    
+    
+}
+
+section>p,
+.section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.profile-pic-wrapper:hover {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+    cursor: default;
+}
+
+/* Contact Section */
+#contact {
+    background: var(--skills-bg);
+    
+}
+
+.contact-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-card {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.15);
+}
+
+.contact-link .material-icons {
+    font-size: 18px;
+    color: var(--accent);
+}
+
+
+/* Footer */
+footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+   
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .container {
+        padding: 40px 20px;
+        padding-top: 100px;
+    }
+
+    section {
+        padding: 32px 20px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 12px;
+       
+        align-items: center;
+    }
+
+    .header-buttons {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .btn {
+        width: 70%;
+
+        justify-content: center;
+
+    }
+
+    /* Mobile Navigation */
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+        border-bottom-left-radius: 3%;
+        border-bottom-right-radius: 3%;
+
+
+
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+    }
+
+    .nav-links li {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 16px 24px;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+}
+
+
+/* some animation */
+/* Scroll reveal base state */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+/* visible */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* delays */
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+.reveal-delay-6 {
+    transition-delay: 0.6s;
+}
+
+.reveal-delay-7 {
+    transition-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+
+/* Extra small devices (phones less 480px) */
+@media (max-width: 480px) {
+
+  
+    h1 {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 28px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 32px 16px;
+        padding-top: 90px;
+    }
+
+    section {
+        padding: 28px 16px;
+    }
+
+    
+    .nav-container {
+        padding: 14px 16px;
+    }
+
+    .nav-logo {
+        font-size: 18px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    
+    .profile-pic-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+
+   
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skill-category {
+        font-size: 13px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-title {
+        font-size: 16px;
+    }
+
+    
+    .cert-showcase {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cert-box img {
+        aspect-ratio: 3 / 4;
+        padding: 8px;
+    }
+
+  
+    .contact-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .education-item {
+        padding-bottom: 52px;
+    }
+
+    .edu-tag {
+        position: absolute;
+        top: auto;
+        bottom: 16px;
+        right: 16px;
+        font-size: 11px;
+    }
+
+    
+    .experience-date {
+        font-size: 13px;
+        top: 80px;
+        left: 30px;
+    }
+
+    .project-subsection h4 {
+        width: 17em;
+        margin-top: 2rem;
+    }
+
+    
+    footer {
+        font-size: 13px;
+    }
+}
+
+
+/* scrol bar design */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+            var(--accent),
+            var(--logo));
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg,
+            #2563eb,
+            #2dd4bf);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+}
