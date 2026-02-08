@@ -328,6 +328,18 @@ h2::after {
 
 
 
+.inline-link {
+    font-family: 'Fira Code', monospace;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+.inline-link:hover {
+    text-decoration: none;
+    filter: brightness(1.4);
+}
 
 
 /* Skills - Terminal Style */
